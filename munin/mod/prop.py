@@ -139,6 +139,9 @@ class prop(loadable.loadable):
         if user.has_ancestor(self.cursor,person):
             irc_msg.reply("Ew, incest.")
             return 1
+        if person.lower() == self.config.get('auth').lower().split()[0]:
+            irc_msg.reply("I am already here, shitface.")
+            return 1
         last_comp=self.was_recently_proposed('invite',person)
         prop_id=self.create_invite_proposal(user,person,comment,last_comp)
         reply="%s created a new proposition (nr. %d) to invite %s." %(user.pnick,prop_id,person)
