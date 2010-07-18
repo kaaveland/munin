@@ -139,7 +139,7 @@ class prop(loadable.loadable):
         if user.has_ancestor(self.cursor,person):
             irc_msg.reply("Ew, incest.")
             return 1
-        if person.lower() == self.config.get('auth').lower().split()[0]:
+        if person.lower() == self.config.get('irc', 'auth').lower().split()[0]:
             irc_msg.reply("I am already here, shitface.")
             return 1
         last_comp=self.was_recently_proposed('invite',person)
